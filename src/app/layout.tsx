@@ -3,6 +3,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { cn } from "@/lib/utils";
 
 const font = Poppins({
@@ -22,8 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("bg-gray-50 text-gray-950", font.className)}>
-        <header className="h-[80px] bg-gray-100"></header>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

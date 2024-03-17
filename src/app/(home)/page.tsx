@@ -1,3 +1,7 @@
+import { CODING_BLOGS, DESIGN_BLOGS } from "@/data/blog-data";
+
+import { BlogOverview } from "./components/blog-overview";
+
 export default function Page() {
   return (
     <main className=" mx-auto max-w-[1120px] px-2 pt-14">
@@ -9,6 +13,11 @@ export default function Page() {
           Topics include design, web development, and more.
         </p>
       </hgroup>
+
+      <div className="mt-16 space-y-16">
+        <BlogOverview category="design" blogs={DESIGN_BLOGS} />
+        <BlogOverview category="coding" blogs={CODING_BLOGS} />
+      </div>
     </main>
   );
 }
