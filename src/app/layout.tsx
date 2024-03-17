@@ -1,17 +1,17 @@
-import './globals.css';
+import "./globals.css";
 
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 const font = Poppins({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: 'Home | Blog Website',
+  title: "Home | Blog Website",
 };
 
 export default function RootLayout({
@@ -21,7 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn('bg-neutral-50 text-neutral-950', font.className)}>
+      <body className={cn("bg-gray-50 text-gray-950", font.className)}>
+        <header className="h-[80px] bg-gray-100"></header>
         {children}
       </body>
     </html>
