@@ -16,17 +16,16 @@ export function BlogListing({
   tags: string[];
 }) {
   const [search, setSearch] = useState("");
-  const [selectedTag, setSelectedTag] = useState("*");
+  const [selectedTags, setSelectedTags] = useState(["*"]);
 
   const filteredBlogs = blogs.filter((blog) => {
     const passesSearchFilter =
       blog.title.toLowerCase().includes(search.toLowerCase()) ||
       blog.excerpt.toLowerCase().includes(search.toLowerCase());
 
-    const passesTagFilter =
-      selectedTag === "*"
-        ? true
-        : blog.tags?.some((tag) => tag === selectedTag);
+    const passesTagFilter = selectedTags.includes("*")
+      ? true
+      : blog.tags?.some((tag) => selectedTags.includes(tag));
 
     return passesSearchFilter && passesTagFilter;
   });
@@ -40,21 +39,22 @@ export function BlogListing({
       />
 
       <ToggleGroup
-        type="single"
-        defaultValue="*"
-        value={selectedTag}
+        type="multiple"
+        value={selectedTags}
         onValueChange={(value) => {
-          if (value) setSelectedTag(value);
+          if (!value.length) return setSelectedTags(["*"]);
+          if (!selectedTags.includes("*") && value.includes("*")) {
+            return setSelectedTags(["*"]);
+          }
+          setSelectedTags(value.filter((tag) => tag !== "*"));
         }}
         className="mt-4 flex-wrap justify-start"
       >
-        <ToggleGroupItem value="*" className="h-fit py-1">
-          All
-        </ToggleGroupItem>
+        <TagToggleGroupItem value="*">All</TagToggleGroupItem>
         {tags.map((tag) => (
-          <ToggleGroupItem key={tag} value={tag} className="h-fit py-1">
+          <TagToggleGroupItem key={tag} value={tag}>
             {tag}
-          </ToggleGroupItem>
+          </TagToggleGroupItem>
         ))}
       </ToggleGroup>
 
@@ -68,5 +68,22 @@ export function BlogListing({
         )}
       </div>
     </div>
+  );
+}
+
+function TagToggleGroupItem({
+  children,
+  value,
+}: {
+  children: React.ReactNode;
+  value: string;
+}) {
+  return (
+    <ToggleGroupItem
+      value={value}
+      className="h-fit py-1 data-[state=on]:bg-gray-700 data-[state=on]:text-gray-50"
+    >
+      {children}
+    </ToggleGroupItem>
   );
 }

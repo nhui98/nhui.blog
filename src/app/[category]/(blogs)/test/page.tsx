@@ -7,7 +7,7 @@ export const blogMeta: BlogMeta = {
   date: "March 17, 2024",
   excerpt:
     "How beneficial is to be pixel perfect when designing and translating your designs into code.",
-  tags: ["design"],
+  tags: ["design", "figma"],
 };
 
 export default async function Page() {

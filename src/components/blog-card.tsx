@@ -22,7 +22,8 @@ export function BlogCard({ blog, type }: BlogCardProps) {
         className={cn(
           "mt-2",
           type === "home-page" && "line-clamp-3 h-[72px]",
-          type === "category-listing" && "line-clamp-2 h-[48px]",
+          type === "category-listing" &&
+            "line-clamp-3 h-[72px] sm:line-clamp-2 sm:h-[48px]",
         )}
       >
         {blog.excerpt}
@@ -32,7 +33,7 @@ export function BlogCard({ blog, type }: BlogCardProps) {
         <div className="text-sm font-medium text-gray-500">{blog.date}</div>
         <div className="flex flex-wrap justify-end gap-1">
           {blog.tags?.map((tag) => (
-            <Badge key={tag} variant={TAG_STYLE["design"]}>
+            <Badge key={tag} variant={TAG_STYLE[tag]}>
               {tag}
             </Badge>
           ))}
