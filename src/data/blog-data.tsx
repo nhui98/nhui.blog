@@ -1,3 +1,5 @@
+import { Code2, Palette } from "lucide-react";
+
 import { BadgeProps } from "@/components/ui/badge";
 
 export type Blog = {
@@ -17,6 +19,15 @@ export type BlogCategory = "design" | "coding";
 export type Blogs = {
   category: BlogCategory;
   blogs: Blog[];
+};
+
+export const BLOG_CATEGORY_ICON: Record<BlogCategory, JSX.Element> = {
+  design: (
+    <Palette className="size-8 rounded-md bg-blue-200 p-1 text-blue-500" />
+  ),
+  coding: (
+    <Code2 className="size-8 rounded-md bg-yellow-200 p-1 text-yellow-500" />
+  ),
 };
 
 const DESIGN_BLOGS: Blog[] = [

@@ -1,18 +1,9 @@
-import { ArrowRight, Code2, Palette } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
-import { Blog, BlogCategory } from "@/data/blog-data";
+import { Blog, BLOG_CATEGORY_ICON, BlogCategory } from "@/data/blog-data";
 import { cn } from "@/lib/utils";
-
-const HEADING_ICON: Record<BlogCategory, JSX.Element> = {
-  design: (
-    <Palette className="size-8 rounded-md bg-blue-200 p-1 text-blue-500" />
-  ),
-  coding: (
-    <Code2 className="size-8 rounded-md bg-yellow-200 p-1 text-yellow-500" />
-  ),
-};
 
 type OverviewProps = {
   category: BlogCategory;
@@ -25,7 +16,7 @@ export function BlogOverview({ category, blogs }: OverviewProps) {
   return (
     <section>
       <div className="flex items-center gap-x-2 rounded-lg bg-gray-200 p-2">
-        {HEADING_ICON[category]}
+        {BLOG_CATEGORY_ICON[category]}
         <h2 className="text-2xl font-semibold capitalize">{category}</h2>
       </div>
 
