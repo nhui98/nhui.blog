@@ -1,36 +1,37 @@
 import { notFound } from "next/navigation";
 
+import { BlogListing } from "@/components/blog-listing";
 import { BlogContainer } from "@/components/container";
+import { BLOG_CATEGORY_ICON } from "@/components/icons/blog-category-icons";
 import { Separator } from "@/components/ui/separator";
-import { BLOG_CATEGORY_ICON, BlogCategory, BLOGS } from "@/data/blog-data";
+import { getAllBlogs } from "@/lib/get-blogs";
+import { isBlogCategory } from "@/lib/validators";
 
-import { BlogList } from "./components/blog-list";
-
-export default function Page({
-  params,
+export default async function Page({
+  params: { category },
 }: {
-  params: { category: BlogCategory };
+  params: { category: string };
 }) {
-  const blogs = BLOGS.find((blog) => blog.category === params.category);
+  if (!isBlogCategory(category)) notFound();
 
-  if (!blogs) notFound();
+  const blogs = (await getAllBlogs()).filter(
+    (blog) => blog.category === category,
+  );
 
   const tags = new Set<string>();
 
-  blogs.blogs.forEach((blog) => {
-    blog.tags?.forEach((tag) => tags.add(tag.name));
-  });
+  blogs.forEach((blog) => blog.tags?.forEach((tag) => tags.add(tag)));
 
   return (
     <BlogContainer className="pt-14">
       <div className="flex items-center gap-x-2">
-        {BLOG_CATEGORY_ICON[params.category]}
-        <h1 className="text-3xl font-semibold capitalize">{params.category}</h1>
+        {BLOG_CATEGORY_ICON[category]}
+        <h1 className="text-3xl font-semibold capitalize">{category}</h1>
       </div>
 
       <Separator className="my-6" />
 
-      <BlogList blogs={blogs.blogs} tags={Array.from(tags)} />
+      <BlogListing blogs={blogs} tags={Array.from(tags)} />
     </BlogContainer>
   );
 }

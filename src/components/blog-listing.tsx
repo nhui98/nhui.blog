@@ -1,14 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Blog } from "@/data/blog-data";
+import { BlogMetaWithSlug } from "@/lib/get-blogs";
 
-export function BlogList({ blogs, tags }: { blogs: Blog[]; tags: string[] }) {
+import { BlogCard } from "./blog-card";
+
+export function BlogListing({
+  blogs,
+  tags,
+}: {
+  blogs: BlogMetaWithSlug[];
+  tags: string[];
+}) {
   const [search, setSearch] = useState("");
   const [selectedTag, setSelectedTag] = useState("*");
 
@@ -20,7 +26,7 @@ export function BlogList({ blogs, tags }: { blogs: Blog[]; tags: string[] }) {
     const passesTagFilter =
       selectedTag === "*"
         ? true
-        : blog.tags?.some((tag) => tag.name === selectedTag);
+        : blog.tags?.some((tag) => tag === selectedTag);
 
     return passesSearchFilter && passesTagFilter;
   });
@@ -54,31 +60,9 @@ export function BlogList({ blogs, tags }: { blogs: Blog[]; tags: string[] }) {
 
       <div className="mt-4 space-y-1">
         {filteredBlogs.map((blog) => (
-          <BlogRow key={blog.title} blog={blog} />
+          <BlogCard key={blog.title} blog={blog} type="category-listing" />
         ))}
       </div>
     </div>
-  );
-}
-
-function BlogRow({ blog }: { blog: Blog }) {
-  return (
-    <article className="relative flex flex-col rounded-md bg-transparent p-4 transition hover:bg-gray-100">
-      <h3 className="flex flex-1 items-center text-xl font-semibold">
-        {blog.title}
-      </h3>
-      <p className="mt-2 line-clamp-2 h-[48px]">{blog.excerpt}</p>
-      <div className="mt-4 flex items-center justify-between gap-x-4">
-        <div className="text-sm font-medium text-gray-500">{blog.date}</div>
-        <div className="flex flex-wrap justify-end gap-1">
-          {blog.tags?.map((tag) => (
-            <Badge key={tag.name} variant={tag.tagStyle}>
-              {tag.name}
-            </Badge>
-          ))}
-        </div>
-      </div>
-      <Link href={blog.href} className="absolute inset-0" />
-    </article>
   );
 }
