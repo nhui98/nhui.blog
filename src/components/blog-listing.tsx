@@ -59,9 +59,13 @@ export function BlogListing({
       </ToggleGroup>
 
       <div className="mt-4 space-y-1">
-        {filteredBlogs.map((blog) => (
-          <BlogCard key={blog.title} blog={blog} type="category-listing" />
-        ))}
+        {filteredBlogs.length > 0 ? (
+          filteredBlogs.map((blog) => (
+            <BlogCard key={blog.title} blog={blog} type="category-listing" />
+          ))
+        ) : (
+          <div className="text-center">No blogs found.</div>
+        )}
       </div>
     </div>
   );
