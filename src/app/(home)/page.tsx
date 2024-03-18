@@ -1,10 +1,10 @@
-import { CODING_BLOGS, DESIGN_BLOGS } from "@/data/blog-data";
+import { BLOGS } from "@/data/blog-data";
 
 import { BlogOverview } from "./components/blog-overview";
 
 export default function Page() {
   return (
-    <main className=" mx-auto max-w-[1120px] px-2 pt-14">
+    <div className="mx-auto max-w-[1120px] px-2 pt-14">
       <hgroup className="space-y-8 text-center">
         <h1 className="whitespace-pre-line text-5xl font-bold leading-tight sm:text-6xl sm:leading-tight">
           Just some blogs.{"\n"} Browse at your leisure.
@@ -15,9 +15,10 @@ export default function Page() {
       </hgroup>
 
       <div className="mt-16 space-y-16">
-        <BlogOverview category="design" blogs={DESIGN_BLOGS} />
-        <BlogOverview category="coding" blogs={CODING_BLOGS} />
+        {BLOGS.map(({ category, blogs }) => (
+          <BlogOverview key={category} category={category} blogs={blogs} />
+        ))}
       </div>
-    </main>
+    </div>
   );
 }

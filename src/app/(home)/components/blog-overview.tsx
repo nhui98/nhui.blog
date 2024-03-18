@@ -2,10 +2,10 @@ import { ArrowRight, Code2, Palette } from "lucide-react";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
-import { Blog } from "@/data/blog-data";
+import { Blog, BlogCategory } from "@/data/blog-data";
 import { cn } from "@/lib/utils";
 
-const HEADING_ICON = {
+const HEADING_ICON: Record<BlogCategory, JSX.Element> = {
   design: (
     <Palette className="size-8 rounded-md bg-blue-200 p-1 text-blue-500" />
   ),
@@ -15,7 +15,7 @@ const HEADING_ICON = {
 };
 
 type OverviewProps = {
-  category: keyof typeof HEADING_ICON;
+  category: BlogCategory;
   blogs: Blog[];
 };
 

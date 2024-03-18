@@ -12,7 +12,14 @@ export type Blog = {
   href: string;
 };
 
-export const DESIGN_BLOGS: Blog[] = [
+export type BlogCategory = "design" | "coding";
+
+export type Blogs = {
+  category: BlogCategory;
+  blogs: Blog[];
+};
+
+const DESIGN_BLOGS: Blog[] = [
   {
     id: "pixel-perfect",
     title: "Pixel Perfect",
@@ -27,7 +34,7 @@ export const DESIGN_BLOGS: Blog[] = [
   },
 ];
 
-export const CODING_BLOGS: Blog[] = [
+const CODING_BLOGS: Blog[] = [
   {
     id: "pixel-perfect",
     title: "Pixel Perfect",
@@ -40,4 +47,9 @@ export const CODING_BLOGS: Blog[] = [
     ],
     href: "/design/pixel-perfect",
   },
+];
+
+export const BLOGS: Blogs[] = [
+  { category: "design", blogs: DESIGN_BLOGS },
+  { category: "coding", blogs: CODING_BLOGS },
 ];
