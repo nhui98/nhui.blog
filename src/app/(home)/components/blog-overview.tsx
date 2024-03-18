@@ -32,7 +32,7 @@ export function BlogOverview({ category, blogs }: OverviewProps) {
         )}
       >
         {hasBlogs ? (
-          blogs.map((blog) => <BlogSummaryCard key={blog.id} {...blog} />)
+          blogs.map((blog) => <BlogSummaryCard key={blog.id} blog={blog} />)
         ) : (
           <p className="my-8 text-center">No blogs found.</p>
         )}
@@ -52,24 +52,24 @@ export function BlogOverview({ category, blogs }: OverviewProps) {
   );
 }
 
-function BlogSummaryCard({ title, date, excerpt, tags, href }: Blog) {
+function BlogSummaryCard({ blog }: { blog: Blog }) {
   return (
     <article className="relative flex flex-col rounded-md bg-transparent p-4 transition hover:bg-gray-100">
       <h3 className="flex flex-1 items-center text-xl font-semibold">
-        {title}
+        {blog.title}
       </h3>
-      <p className="mt-2 line-clamp-3 h-[72px]">{excerpt}</p>
+      <p className="mt-2 line-clamp-3 h-[72px]">{blog.excerpt}</p>
       <div className="mt-4 flex items-center justify-between gap-x-4">
-        <div className="text-sm font-medium text-gray-500">{date}</div>
+        <div className="text-sm font-medium text-gray-500">{blog.date}</div>
         <div className="flex flex-wrap justify-end gap-1">
-          {tags?.map(({ tag, tagStyle }) => (
-            <Badge key={tag} variant={tagStyle}>
-              {tag}
+          {blog.tags?.map((tag) => (
+            <Badge key={tag.name} variant={tag.tagStyle}>
+              {tag.name}
             </Badge>
           ))}
         </div>
       </div>
-      <Link href={href} className="absolute inset-0" />
+      <Link href={blog.href} className="absolute inset-0" />
     </article>
   );
 }

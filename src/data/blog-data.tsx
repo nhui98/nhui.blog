@@ -8,7 +8,7 @@ export type Blog = {
   date: string;
   excerpt: string;
   tags?: {
-    tag: string;
+    name: string;
     tagStyle: BadgeProps["variant"];
   }[];
   href: string;
@@ -26,7 +26,7 @@ export const BLOG_CATEGORY_ICON: Record<BlogCategory, JSX.Element> = {
     <Palette className="size-8 rounded-md bg-blue-200 p-1 text-blue-500" />
   ),
   coding: (
-    <Code2 className="size-8 rounded-md bg-yellow-200 p-1 text-yellow-500" />
+    <Code2 className="size-8 rounded-md bg-purple-200 p-1 text-purple-500" />
   ),
 };
 
@@ -38,8 +38,8 @@ const DESIGN_BLOGS: Blog[] = [
     excerpt:
       "How beneficial is to be pixel perfect when designing and translating your designs into code.",
     tags: [
-      { tag: "design", tagStyle: "blue" },
-      { tag: "figma", tagStyle: "purple" },
+      { name: "design", tagStyle: "blue" },
+      { name: "figma", tagStyle: "purple" },
     ],
     href: "/design/pixel-perfect",
   },
@@ -53,8 +53,8 @@ const CODING_BLOGS: Blog[] = [
     excerpt:
       "How beneficial is to be pixel perfect when designing and translating your designs into code.",
     tags: [
-      { tag: "design", tagStyle: "blue" },
-      { tag: "figma", tagStyle: "purple" },
+      { name: "design", tagStyle: "blue" },
+      { name: "figma", tagStyle: "purple" },
     ],
     href: "/design/pixel-perfect",
   },
