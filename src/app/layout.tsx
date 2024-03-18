@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={cn("bg-gray-50 text-gray-950", font.className)}>
         <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="grid flex-1">{children}</main>
           <Footer />
         </div>
       </body>

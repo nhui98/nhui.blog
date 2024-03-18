@@ -1,10 +1,11 @@
+import { Container } from "@/components/container";
 import { BLOGS } from "@/data/blog-data";
 
 import { BlogOverview } from "./components/blog-overview";
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-[1120px] px-2 pt-14">
+    <Container className="pt-14">
       <hgroup className="space-y-8 text-center">
         <h1 className="whitespace-pre-line text-5xl font-bold leading-tight sm:text-6xl sm:leading-tight">
           Just some blogs.{"\n"} Browse at your leisure.
@@ -19,6 +20,6 @@ export default function Page() {
           <BlogOverview key={category} category={category} blogs={blogs} />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
