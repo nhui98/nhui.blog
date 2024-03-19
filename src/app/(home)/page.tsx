@@ -53,7 +53,7 @@ function BlogOverview({ category, blogs }: OverviewProps) {
 
       <div
         className={cn(
-          "mt-3 space-y-4",
+          "mt-3 [&>article]:my-1",
           blogs.length > 0 &&
             "grid auto-rows-[0px] grid-cols-1 gap-x-4 overflow-hidden sm:grid-cols-2 lg:grid-cols-3",
           blogs.length >= 1 && "grid-rows-1",
