@@ -26,7 +26,7 @@ export function BlogCard({ blog, type }: BlogCardProps) {
             "line-clamp-3 h-[72px] sm:line-clamp-2 sm:h-[48px]",
         )}
       >
-        {blog.excerpt}
+        {blog.description}
       </p>
 
       <div className="mt-4 flex items-center justify-between gap-x-4">

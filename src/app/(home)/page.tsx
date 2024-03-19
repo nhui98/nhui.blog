@@ -13,7 +13,7 @@ export default async function Page() {
   const blogs = await getAllBlogs();
 
   return (
-    <Container className="pt-14">
+    <Container>
       <hgroup className="space-y-8 text-center">
         <h1 className="whitespace-pre-line text-5xl font-bold leading-tight sm:text-6xl sm:leading-tight">
           Just some blogs.{"\n"} Browse at your leisure.
@@ -64,7 +64,7 @@ function BlogOverview({ category, blogs }: OverviewProps) {
       >
         {hasBlogs ? (
           blogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} type="home-page" />
+            <BlogCard key={blog.slug} blog={blog} type="home-page" />
           ))
         ) : (
           <p className="my-8 text-center">No blogs found.</p>

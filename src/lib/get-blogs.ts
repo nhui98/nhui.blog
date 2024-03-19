@@ -5,7 +5,14 @@ import * as path from "path";
 
 import { BlogMeta } from "@/types";
 
-export type BlogMetaWithSlug = BlogMeta & { slug: string };
+export type BlogMetaWithSlug = {
+  slug: string;
+  title: string;
+  description: string;
+  category: BlogMeta["custom"]["category"];
+  tags: BlogMeta["custom"]["tags"];
+  date: BlogMeta["custom"]["date"];
+};
 
 export async function getAllBlogs(): Promise<BlogMetaWithSlug[]> {
   const blogFilenames = await glob(["*/page.tsx"], {
@@ -14,14 +21,18 @@ export async function getAllBlogs(): Promise<BlogMetaWithSlug[]> {
 
   const blogs = await Promise.all(
     blogFilenames.map(async (filename) => {
-      const { blogMeta } = (await import(
+      const { metadata } = (await import(
         `/src/app/[category]/(blogs)/${filename}`
-      )) as { blogMeta: BlogMeta };
+      )) as { metadata: BlogMeta };
 
       return {
         slug: filename.replace("/page.tsx", ""),
-        ...blogMeta,
-      };
+        title: metadata.title,
+        description: metadata.description,
+        category: metadata.custom.category,
+        tags: metadata.custom.tags || [],
+        date: metadata.custom.date,
+      } satisfies BlogMetaWithSlug;
     }),
   );
 

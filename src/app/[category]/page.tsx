@@ -23,7 +23,7 @@ export default async function Page({
   blogs.forEach((blog) => blog.tags?.forEach((tag) => tags.add(tag)));
 
   return (
-    <BlogContainer className="pt-14">
+    <BlogContainer>
       <div className="flex items-center gap-x-2">
         {BLOG_CATEGORY_ICON[category]}
         <h1 className="text-3xl font-semibold capitalize">{category}</h1>

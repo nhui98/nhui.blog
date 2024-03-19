@@ -1,10 +1,13 @@
+import type { Metadata } from "next";
+
 import { BlogCategory, BlogTag } from "./lib/validators";
 
-export type BlogMeta = {
-  id: string;
+export type BlogMeta = Metadata & {
   title: string;
-  category: BlogCategory;
-  date: string;
-  excerpt: string;
-  tags?: BlogTag[];
+  description: string;
+  custom: {
+    category: BlogCategory;
+    tags: BlogTag[];
+    date: string;
+  };
 };

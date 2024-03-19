@@ -1,6 +1,6 @@
 import { Code2, Palette } from "lucide-react";
 
-import { BlogCategory } from "@/types";
+import { BlogCategory } from "@/lib/validators";
 
 export const BLOG_CATEGORY_ICON: {
   [key in BlogCategory]: JSX.Element;

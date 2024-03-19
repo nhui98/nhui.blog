@@ -21,7 +21,7 @@ export function BlogListing({
   const filteredBlogs = blogs.filter((blog) => {
     const passesSearchFilter =
       blog.title.toLowerCase().includes(search.toLowerCase()) ||
-      blog.excerpt.toLowerCase().includes(search.toLowerCase());
+      blog.description.toLowerCase().includes(search.toLowerCase());
 
     const passesTagFilter = selectedTags.includes("*")
       ? true
