@@ -1,5 +1,3 @@
-import "server-only";
-
 import glob from "fast-glob";
 import * as path from "path";
 
@@ -22,7 +20,7 @@ export async function getAllBlogs(): Promise<BlogMetaWithSlug[]> {
   const blogs = await Promise.all(
     blogFilenames.map(async (filename) => {
       const { metadata } = (await import(
-        `/src/app/[category]/(blogs)/${filename}`
+        `../app/[category]/(blogs)/${filename}`
       )) as { metadata: BlogMeta };
 
       return {
