@@ -14,9 +14,9 @@ export async function getAllBlogs(): Promise<BlogMetaWithSlug[]> {
 
   const blogs = await Promise.all(
     blogFilenames.map(async (filename) => {
-      const { blogMeta } = await import(
+      const { blogMeta } = (await import(
         `/src/app/[category]/(blogs)/${filename}`
-      );
+      )) as { blogMeta: BlogMeta };
 
       return {
         slug: filename.replace("/page.tsx", ""),
@@ -25,5 +25,7 @@ export async function getAllBlogs(): Promise<BlogMetaWithSlug[]> {
     }),
   );
 
-  return blogs;
+  return blogs.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
 }
