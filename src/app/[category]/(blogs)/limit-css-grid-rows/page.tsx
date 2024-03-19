@@ -1,4 +1,5 @@
-import { BlogContainer } from "@/components/container";
+import { ArticleHeading } from "@/components/article-heading";
+import { CodeHighlight } from "@/components/code-highlight";
 import { BlogMeta } from "@/types";
 
 export const metadata: BlogMeta = {
@@ -12,5 +13,25 @@ export const metadata: BlogMeta = {
 };
 
 export default async function Page() {
-  return <BlogContainer>this is a test blog</BlogContainer>;
+  const codeString = `
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism"; 
+
+const Component = () => {
+  const codeString = 'const test: string = 5';
+
+  return (
+    <SyntaxHighlighter showLineNumbers language="typescript" style={darcula}>
+      {codeString}
+    </SyntaxHighlighter>
+  );
+};
+`;
+  return (
+    <>
+      <ArticleHeading metadata={metadata} />
+      <h2>Highlight Code</h2>
+      <CodeHighlight codeString={codeString} />
+    </>
+  );
 }

@@ -14,7 +14,7 @@ export function Container({
   );
 }
 
-export function BlogContainer({
+export function ContainerSm({
   children,
   className,
 }: {
@@ -22,8 +22,10 @@ export function BlogContainer({
   className?: string;
 }) {
   return (
-    <div className={cn("mx-auto w-full max-w-[736px] px-2 pt-14", className)}>
+    <article
+      className={cn("mx-auto w-full max-w-[736px] px-2 pt-14", className)}
+    >
       {children}
-    </div>
+    </article>
   );
 }
