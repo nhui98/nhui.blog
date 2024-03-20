@@ -4,7 +4,7 @@ import { BadgeProps } from "@/components/ui/badge";
 export const TOPICS = ["design", "coding"] as const;
 
 export function isTopic(topic: string): topic is Topic {
-  return TOPICS.includes(topic as Topic);
+  return TOPICS.includes(topic);
 }
 
 export type Topic = (typeof TOPICS)[number];
@@ -25,6 +25,10 @@ export type Tag = (typeof TAGS)[number];
 
 // Slugs ----------------------------------------------------------------
 const SLUGS = ["limit-css-grid-rows"] as const;
+
+export function isSlug(slug: string): slug is Slug {
+  return SLUGS.includes(slug);
+}
 
 export type Slug = (typeof SLUGS)[number];
 
