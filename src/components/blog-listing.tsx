@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Blog, Slug } from "@/data/blogs";
+import { Blog, Slug } from "@/lib/blogs";
 
 import { BlogCard } from "./blog-card";
 

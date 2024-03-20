@@ -2,9 +2,9 @@ import { Metadata } from "next";
 
 import { ArticleHeading } from "@/components/article-heading";
 import { CodeHighlight } from "@/components/code-highlight";
-import { BLOGS } from "@/data/blogs";
+import { getBlog } from "@/lib/blogs";
 
-const blog = BLOGS["limit-css-grid-rows"];
+const blog = getBlog("limit-css-grid-rows");
 
 export const metadata: Metadata = {
   title: blog.title,

@@ -1,5 +1,4 @@
-import { Blog, Slug } from "@/data/blogs";
-import { TAG_STYLE } from "@/lib/validators";
+import { Blog, getTagStyle, Slug } from "@/lib/blogs";
 
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
@@ -16,7 +15,7 @@ export function ArticleHeading<T extends Slug>({ blog }: { blog: Blog<T> }) {
         <div className="text-sm font-medium text-gray-500">{blog.date}</div>
         <div className="flex flex-wrap gap-1">
           {blog.tags?.map((tag) => (
-            <Badge key={tag} variant={TAG_STYLE[tag]}>
+            <Badge key={tag} variant={getTagStyle(tag)}>
               {tag}
             </Badge>
           ))}

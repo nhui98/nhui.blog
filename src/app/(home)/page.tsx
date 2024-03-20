@@ -4,9 +4,8 @@ import Link from "next/link";
 import { BlogCard } from "@/components/blog-card";
 import { Container } from "@/components/container";
 import { TopicIcon } from "@/components/icons/topic-icon";
-import { Blog, getBlogs, Slug } from "@/data/blogs";
+import { Blog, getBlogs, Slug, Topic, TOPICS } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
-import { Topic, TOPICS } from "@/lib/validators";
 
 export default async function Page() {
   const blogs = getBlogs();

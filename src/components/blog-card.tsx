@@ -1,8 +1,7 @@
 import Link from "next/link";
 
-import { Blog, Slug } from "@/data/blogs";
+import { Blog, getTagStyle, Slug } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
-import { TAG_STYLE } from "@/lib/validators";
 
 import { Badge } from "./ui/badge";
 
@@ -34,7 +33,7 @@ export function BlogCard<T extends Slug>({
         <div className="text-sm font-medium text-gray-500">{blog.date}</div>
         <div className="flex flex-wrap justify-end gap-1">
           {blog.tags?.map((tag) => (
-            <Badge key={tag} variant={TAG_STYLE[tag]}>
+            <Badge key={tag} variant={getTagStyle(tag)}>
               {tag}
             </Badge>
           ))}
