@@ -3,11 +3,11 @@ import Link from "next/link";
 
 import { BlogCard } from "@/components/blog-card";
 import { Container } from "@/components/container";
-import { BLOG_CATEGORY_ICON } from "@/components/icons/blog-category-icons";
+import { TopicIcon } from "@/components/icons/topic-icon";
 import { getAllBlogs } from "@/lib/get-blogs";
 import { BlogMetaWithSlug } from "@/lib/get-blogs";
 import { cn } from "@/lib/utils";
-import { BLOG_CATEGORIES, BlogCategory } from "@/lib/validators";
+import { Topic, TOPICS } from "@/lib/validators";
 
 export default async function Page() {
   const blogs = await getAllBlogs();
@@ -24,11 +24,11 @@ export default async function Page() {
       </hgroup>
 
       <div className="mt-16 space-y-16">
-        {BLOG_CATEGORIES.map((category) => (
+        {TOPICS.map((topic) => (
           <BlogOverview
-            key={category}
-            category={category}
-            blogs={blogs.filter((blog) => blog.category === category)}
+            key={topic}
+            topic={topic}
+            blogs={blogs.filter((blog) => blog.topic === topic)}
           />
         ))}
       </div>
@@ -37,18 +37,18 @@ export default async function Page() {
 }
 
 type OverviewProps = {
-  category: BlogCategory;
+  topic: Topic;
   blogs: BlogMetaWithSlug[];
 };
 
-function BlogOverview({ category, blogs }: OverviewProps) {
+function BlogOverview({ topic, blogs }: OverviewProps) {
   const hasBlogs = blogs.length > 0;
 
   return (
     <section>
       <div className="flex items-center gap-x-2 rounded-lg bg-gray-200 p-2">
-        {BLOG_CATEGORY_ICON[category]}
-        <h2 className="text-2xl font-semibold capitalize">{category}</h2>
+        <TopicIcon topic={topic} className="size-8" />
+        <h2 className="text-2xl font-semibold capitalize">{topic}</h2>
       </div>
 
       <div
@@ -73,7 +73,7 @@ function BlogOverview({ category, blogs }: OverviewProps) {
 
       {hasBlogs && (
         <Link
-          href={`/${category}`}
+          href={`/${topic}`}
           className="group relative mx-auto mt-8 flex h-12 w-fit items-center gap-x-4 py-4 pl-2 pr-6"
         >
           <ArrowRight className="size-8 text-zinc-900 transition-all duration-300 group-hover:translate-x-2 group-hover:text-blue-500" />

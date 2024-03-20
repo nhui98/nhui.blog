@@ -7,27 +7,27 @@ export type BlogMetaWithSlug = {
   slug: string;
   title: string;
   description: string;
-  category: BlogMeta["custom"]["category"];
+  topic: BlogMeta["custom"]["topic"];
   tags: BlogMeta["custom"]["tags"];
   date: BlogMeta["custom"]["date"];
 };
 
 export async function getAllBlogs(): Promise<BlogMetaWithSlug[]> {
   const blogFilenames = await glob(["*/page.tsx"], {
-    cwd: path.join(process.cwd(), "src/app/[category]/(blogs)"),
+    cwd: path.join(process.cwd(), "src/app/[topic]/(blogs)"),
   });
 
   const blogs = await Promise.all(
     blogFilenames.map(async (filename) => {
       const { metadata } = (await import(
-        `../app/[category]/(blogs)/${filename}`
+        `../app/[topic]/(blogs)/${filename}`
       )) as { metadata: BlogMeta };
 
       return {
         slug: filename.replace("/page.tsx", ""),
         title: metadata.title,
         description: metadata.description,
-        category: metadata.custom.category,
+        topic: metadata.custom.topic,
         tags: metadata.custom.tags || [],
         date: metadata.custom.date,
       } satisfies BlogMetaWithSlug;

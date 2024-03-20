@@ -1,9 +1,9 @@
 import { BadgeProps } from "@/components/ui/badge";
 
-export const BLOG_CATEGORIES = ["design", "coding"] as const;
+export const TOPICS = ["design", "coding"] as const;
 
-export function isBlogCategory(category: string): category is BlogCategory {
-  return BLOG_CATEGORIES.includes(category as BlogCategory);
+export function isTopic(topic: string): topic is Topic {
+  return TOPICS.includes(topic as Topic);
 }
 
 export const TAGS = ["design", "figma"] as const;
@@ -15,5 +15,5 @@ export const TAG_STYLE: {
   figma: "purple",
 };
 
-export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
-export type BlogTag = (typeof TAGS)[number];
+export type Topic = (typeof TOPICS)[number];
+export type Tag = (typeof TAGS)[number];

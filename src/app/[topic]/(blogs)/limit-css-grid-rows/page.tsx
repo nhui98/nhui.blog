@@ -6,7 +6,7 @@ export const metadata: BlogMeta = {
   title: "Limit CSS Grid Rows",
   description: "How to limit the number of rows in a CSS grid.",
   custom: {
-    category: "design",
+    topic: "design",
     date: "March 17, 2024",
     tags: ["design", "figma"],
   },
