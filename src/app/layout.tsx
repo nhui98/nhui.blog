@@ -23,7 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-gray-50 text-gray-950", font.className)}>
+      <body
+        className={cn(
+          "overflow-y-scroll bg-gray-50 text-gray-950",
+          font.className,
+        )}
+      >
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="grid flex-1">{children}</main>
