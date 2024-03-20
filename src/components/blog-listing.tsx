@@ -4,15 +4,15 @@ import { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { BlogMetaWithSlug } from "@/lib/get-blogs";
+import { Blog, Slug } from "@/data/blogs";
 
 import { BlogCard } from "./blog-card";
 
-export function BlogListing({
+export function BlogListing<T extends Slug>({
   blogs,
   tags,
 }: {
-  blogs: BlogMetaWithSlug[];
+  blogs: Blog<T>[];
   tags: string[];
 }) {
   const [search, setSearch] = useState("");

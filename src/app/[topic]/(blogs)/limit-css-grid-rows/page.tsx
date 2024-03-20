@@ -1,15 +1,14 @@
+import { Metadata } from "next";
+
 import { ArticleHeading } from "@/components/article-heading";
 import { CodeHighlight } from "@/components/code-highlight";
-import { BlogMeta } from "@/types";
+import { BLOGS } from "@/data/blogs";
 
-export const metadata: BlogMeta = {
-  title: "Limit CSS Grid Rows",
-  description: "How to limit the number of rows in a CSS grid.",
-  custom: {
-    topic: "design",
-    date: "March 17, 2024",
-    tags: ["design", "figma"],
-  },
+const blog = BLOGS["limit-css-grid-rows"];
+
+export const metadata: Metadata = {
+  title: blog.title,
+  description: blog.description,
 };
 
 export default async function Page() {
@@ -29,7 +28,7 @@ const Component = () => {
 `;
   return (
     <>
-      <ArticleHeading metadata={metadata} />
+      <ArticleHeading blog={blog} />
       <h2>Highlight Code</h2>
       <CodeHighlight codeString={codeString} />
     </>

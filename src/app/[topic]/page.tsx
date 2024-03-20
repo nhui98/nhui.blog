@@ -4,7 +4,7 @@ import { BlogListing } from "@/components/blog-listing";
 import { ContainerSm } from "@/components/container";
 import { TopicIcon } from "@/components/icons/topic-icon";
 import { Separator } from "@/components/ui/separator";
-import { getAllBlogs } from "@/lib/get-blogs";
+import { getBlogs } from "@/data/blogs";
 import { isTopic, TOPICS } from "@/lib/validators";
 
 export async function generateStaticParams() {
@@ -20,7 +20,7 @@ export default async function Page({
 }) {
   if (!isTopic(topic)) notFound();
 
-  const blogs = (await getAllBlogs()).filter((blog) => blog.topic === topic);
+  const blogs = getBlogs().filter((blog) => blog.topic === topic);
 
   const tags = new Set<string>();
 

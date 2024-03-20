@@ -4,13 +4,12 @@ import Link from "next/link";
 import { BlogCard } from "@/components/blog-card";
 import { Container } from "@/components/container";
 import { TopicIcon } from "@/components/icons/topic-icon";
-import { getAllBlogs } from "@/lib/get-blogs";
-import { BlogMetaWithSlug } from "@/lib/get-blogs";
+import { Blog, getBlogs, Slug } from "@/data/blogs";
 import { cn } from "@/lib/utils";
 import { Topic, TOPICS } from "@/lib/validators";
 
 export default async function Page() {
-  const blogs = await getAllBlogs();
+  const blogs = getBlogs();
 
   return (
     <Container>
@@ -36,12 +35,13 @@ export default async function Page() {
   );
 }
 
-type OverviewProps = {
+function BlogOverview<T extends Slug>({
+  topic,
+  blogs,
+}: {
   topic: Topic;
-  blogs: BlogMetaWithSlug[];
-};
-
-function BlogOverview({ topic, blogs }: OverviewProps) {
+  blogs: Blog<T>[];
+}) {
   const hasBlogs = blogs.length > 0;
 
   return (

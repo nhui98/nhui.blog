@@ -1,17 +1,18 @@
 import Link from "next/link";
 
-import { BlogMetaWithSlug } from "@/lib/get-blogs";
+import { Blog, Slug } from "@/data/blogs";
 import { cn } from "@/lib/utils";
 import { TAG_STYLE } from "@/lib/validators";
 
 import { Badge } from "./ui/badge";
 
-type BlogCardProps = {
-  blog: BlogMetaWithSlug;
+export function BlogCard<T extends Slug>({
+  blog,
+  type,
+}: {
+  blog: Blog<T>;
   type: "home-page" | "category-listing";
-};
-
-export function BlogCard({ blog, type }: BlogCardProps) {
+}) {
   return (
     <article className="relative flex flex-col rounded-md bg-transparent p-4 transition hover:bg-gray-100">
       <h3 className="flex flex-1 items-center text-xl font-semibold">
