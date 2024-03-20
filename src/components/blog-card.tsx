@@ -13,7 +13,7 @@ export function BlogCard<T extends Slug>({
   type: "home-page" | "category-listing";
 }) {
   return (
-    <article className="relative flex flex-col rounded-md bg-transparent p-4 transition hover:bg-gray-100">
+    <article className="relative flex flex-col rounded-md bg-transparent p-4 transition hover:bg-gray-100 dark:hover:bg-gray-900">
       <h3 className="flex flex-1 items-center text-xl font-semibold">
         {blog.title}
       </h3>
@@ -30,7 +30,9 @@ export function BlogCard<T extends Slug>({
       </p>
 
       <div className="mt-4 flex items-center justify-between gap-x-4">
-        <div className="text-sm font-medium text-gray-500">{blog.date}</div>
+        <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+          {blog.date}
+        </div>
         <div className="flex flex-wrap justify-end gap-1">
           {blog.tags?.map((tag) => (
             <Badge key={tag} variant={getTagStyle(tag)}>

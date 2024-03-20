@@ -45,7 +45,7 @@ function BlogOverview<T extends Slug>({
 
   return (
     <section>
-      <div className="flex items-center gap-x-2 rounded-lg bg-gray-200 p-2">
+      <div className="flex items-center gap-x-2 rounded-lg bg-gray-200 p-2 dark:bg-gray-800">
         <TopicIcon topic={topic} className="size-8" />
         <h2 className="text-2xl font-semibold capitalize">{topic}</h2>
       </div>
@@ -75,9 +75,9 @@ function BlogOverview<T extends Slug>({
           href={`/${topic}`}
           className="group relative mx-auto mt-8 flex h-12 w-fit items-center gap-x-4 py-4 pl-2 pr-6"
         >
-          <ArrowRight className="size-8 text-zinc-900 transition-all duration-300 group-hover:translate-x-2 group-hover:text-blue-500" />
+          <ArrowRight className="size-8 text-zinc-900 transition-all duration-300 group-hover:translate-x-2 group-hover:text-blue-500 dark:text-zinc-50 dark:group-hover:text-purple-500" />
           <span className="font-medium">Browse All</span>
-          <div className="absolute inset-0 size-12 rounded-full border-2 border-zinc-900 transition-all duration-300 group-hover:w-full group-hover:border-blue-500"></div>
+          <div className="absolute inset-0 size-12 rounded-full border-2 border-zinc-900 transition-all duration-300 group-hover:w-full group-hover:border-blue-500 dark:border-zinc-200 dark:group-hover:border-purple-500"></div>
         </Link>
       )}
     </section>
