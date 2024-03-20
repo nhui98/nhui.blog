@@ -8,7 +8,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1120px] px-2 pt-14", className)}>
+    <div className={cn("mx-auto w-full max-w-[1120px] px-4 pt-14", className)}>
       {children}
     </div>
   );
@@ -23,7 +23,7 @@ export function ContainerSm({
 }) {
   return (
     <article
-      className={cn("mx-auto w-full max-w-[736px] px-2 pt-14", className)}
+      className={cn("mx-auto w-full max-w-[736px] px-4 pt-14", className)}
     >
       {children}
     </article>
