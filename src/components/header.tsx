@@ -17,7 +17,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getBlog, isSlug, isTopic } from "@/lib/blogs";
+import { getBlog, isSlug, isTopic, Topic } from "@/lib/blogs";
 
 import { Container } from "./container";
 import { BlogLogo } from "./icons/blog-logo";
@@ -29,8 +29,7 @@ export function Header() {
     (s) => !s.startsWith("("),
   );
 
-  const blogTopic: string | undefined = segments[0];
-  const blogSlug: string | undefined = segments[1];
+  const segment: string | undefined = segments[0];
 
   return (
     <header>
@@ -44,32 +43,13 @@ export function Header() {
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            {isTopic(blogTopic) && (
+            {isTopic(segment) && <TopicBreadcrumbItem topic={segment} isPage />}
+            {isSlug(segment) && (
               <>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  {typeof blogSlug === "string" ? (
-                    <BreadcrumbLink asChild>
-                      <Link
-                        href={`/${blogTopic}`}
-                        className="flex items-center gap-0.5 capitalize"
-                      >
-                        {blogTopic}
-                      </Link>
-                    </BreadcrumbLink>
-                  ) : (
-                    <BreadcrumbPage className="capitalize">
-                      {blogTopic}
-                    </BreadcrumbPage>
-                  )}
-                </BreadcrumbItem>
-              </>
-            )}
-            {isSlug(blogSlug) && (
-              <>
+                <TopicBreadcrumbItem topic={getBlog(segment).topic} />
                 <BreadcrumbSeparator className="hidden sm:block" />
                 <BreadcrumbItem className="hidden w-[300px] truncate sm:block">
-                  <BreadcrumbPage>{getBlog(blogSlug).title}</BreadcrumbPage>
+                  <BreadcrumbPage>{getBlog(segment).title}</BreadcrumbPage>
                 </BreadcrumbItem>
               </>
             )}
@@ -96,5 +76,34 @@ export function Header() {
         </div>
       </Container>
     </header>
+  );
+}
+
+function TopicBreadcrumbItem({
+  topic,
+  isPage,
+}: {
+  topic: Topic;
+  isPage?: boolean;
+}) {
+  return (
+    <>
+      <BreadcrumbSeparator />
+
+      <BreadcrumbItem>
+        {isPage ? (
+          <BreadcrumbPage className="capitalize">{topic}</BreadcrumbPage>
+        ) : (
+          <BreadcrumbLink asChild>
+            <Link
+              href={`/${topic}`}
+              className="flex items-center gap-0.5 capitalize"
+            >
+              {topic}
+            </Link>
+          </BreadcrumbLink>
+        )}
+      </BreadcrumbItem>
+    </>
   );
 }

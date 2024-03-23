@@ -42,7 +42,7 @@ export function BlogCard<T extends Slug>({
         </div>
       </div>
 
-      <Link href={`/${blog.topic}/${blog.slug}`} className="absolute inset-0" />
+      <Link href={`/${blog.slug}`} className="absolute inset-0" />
     </article>
   );
 }

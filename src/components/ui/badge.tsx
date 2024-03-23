@@ -10,10 +10,6 @@ const badgeVariants = cva(
       variant: {
         default: "bg-gray-900 text-gray-50 dark:bg-gray-50 dark:text-gray-900",
         blue: "bg-blue-500 text-gray-50",
-        purple: "bg-purple-500 text-gray-50",
-        red: "bg-red-500 text-gray-50",
-        green: "bg-green-500 text-gray-50",
-        yellow: "bg-yellow-500 text-gray-50",
       },
     },
     defaultVariants: {

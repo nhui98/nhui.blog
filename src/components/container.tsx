@@ -13,19 +13,3 @@ export function Container({
     </div>
   );
 }
-
-export function ContainerSm({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <article
-      className={cn("mx-auto w-full max-w-[736px] px-4 pt-14", className)}
-    >
-      {children}
-    </article>
-  );
-}

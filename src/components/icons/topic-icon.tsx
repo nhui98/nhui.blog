@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import { Code2, Palette } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 import { Topic } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
@@ -21,12 +21,6 @@ export function TopicIcon({
   className?: string;
 }) {
   switch (topic) {
-    case "design":
-      return (
-        <Palette
-          className={cn(topicIconVariants({ variant: "blue" }), className)}
-        />
-      );
     case "coding":
       return (
         <Code2

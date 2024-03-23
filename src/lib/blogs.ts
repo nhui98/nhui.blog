@@ -1,7 +1,7 @@
 import { BadgeProps } from "@/components/ui/badge";
 
 // Topics ----------------------------------------------------------------
-export const TOPICS = ["design", "coding"] as const;
+export const TOPICS = ["coding"] as const;
 
 export function isTopic(topic: string): topic is Topic {
   return TOPICS.includes(topic);
@@ -10,14 +10,12 @@ export function isTopic(topic: string): topic is Topic {
 export type Topic = (typeof TOPICS)[number];
 
 // Tags ----------------------------------------------------------------
-export const TAGS = ["design", "figma"] as const;
+export const TAGS = ["styling"] as const;
 
 export function getTagStyle(tag: Tag): BadgeProps["variant"] {
   switch (tag) {
-    case "design":
+    case "styling":
       return "blue";
-    case "figma":
-      return "purple";
   }
 }
 
@@ -59,8 +57,8 @@ const BLOGS: {
     slug: "limit-css-grid-rows",
     title: "Limit CSS Grid Rows",
     description: "How to limit the number of rows in a CSS grid.",
-    topic: "design",
-    tags: ["design", "figma"],
-    date: "March 17, 2024",
+    topic: "coding",
+    tags: ["styling"],
+    date: "March 23, 2024",
   },
 };
