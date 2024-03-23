@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import { Footer } from "@/components/footer";
@@ -15,7 +15,12 @@ const font = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Home | Blog Website",
+  title: {
+    template: `%s`,
+    default: "Nathan's Blogs",
+  },
+  description:
+    "Just some blogs. Browse at your leisure. Topics include design, web development, and more.",
 };
 
 export default async function RootLayout({

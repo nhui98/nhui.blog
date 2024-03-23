@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { BlogCard } from "@/components/blog-card";
@@ -6,6 +7,12 @@ import { Container } from "@/components/container";
 import { TopicIcon } from "@/components/icons/topic-icon";
 import { Blog, getBlogs, Slug, Topic, TOPICS } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Just some blogs. Browse at your leisure. Topics include design, web development, and more.",
+};
 
 export default async function Page() {
   const blogs = getBlogs();

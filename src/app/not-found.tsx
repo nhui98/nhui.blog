@@ -1,8 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { Container } from "@/components/container";
 
-export default function NotFound() {
+export const metadata: Metadata = {
+  title: "404",
+  description: "Page not found.",
+};
+
+export default function Page() {
   return (
     <Container className="place-self-center py-8">
       <h2 className="text-center text-5xl font-bold leading-tight">

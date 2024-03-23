@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   description: blog.description,
 };
 
-export const dynamic = "force-static";
-
 export default async function Page() {
   const [gridExample, gridExample2, gridExample3, useMediaQuery] =
     await Promise.all([
