@@ -3,7 +3,7 @@ import { Blog, getTagStyle, Slug } from "@/lib/blogs";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 
-export function ArticleHeading<T extends Slug>({ blog }: { blog: Blog<T> }) {
+export function BlogHeading<T extends Slug>({ blog }: { blog: Blog<T> }) {
   return (
     <section className="not-prose">
       <hgroup className="space-y-4 text-gray-950 dark:text-gray-50">
