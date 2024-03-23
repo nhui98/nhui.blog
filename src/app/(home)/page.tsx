@@ -41,8 +41,6 @@ function BlogOverview<T extends Slug>({
   topic: Topic;
   blogs: Blog<T>[];
 }) {
-  const hasBlogs = blogs.length > 0;
-
   return (
     <section>
       <div className="flex items-center gap-x-2 rounded-lg bg-gray-200 p-2 dark:bg-gray-800">
@@ -52,16 +50,13 @@ function BlogOverview<T extends Slug>({
 
       <div
         className={cn(
-          "mt-3 [&>article]:my-1",
-          blogs.length > 0 &&
-            "grid auto-rows-[0px] grid-cols-1 gap-x-4 overflow-hidden sm:grid-cols-2 lg:grid-cols-3",
-          blogs.length >= 1 && "grid-rows-1",
-          blogs.length >= 2 && "grid-rows-2 sm:grid-rows-1",
-          blogs.length >= 3 && "grid-rows-3 sm:grid-rows-2 lg:grid-rows-1",
-          blogs.length >= 4 && "lg:grid-rows-2",
+          "mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3",
+          "[&>*:nth-child(3)~*]:hidden sm:[&>*:nth-child(3)~*]:flex",
+          "lg:[&>*:nth-child(3)~*]:flex sm:[&>*:nth-child(4)~*]:hidden",
+          "lg:[&>*:nth-child(6)~*]:hidden",
         )}
       >
-        {hasBlogs ? (
+        {blogs.length > 0 ? (
           blogs.map((blog) => (
             <BlogCard key={blog.slug} blog={blog} type="home-page" />
           ))
@@ -70,7 +65,7 @@ function BlogOverview<T extends Slug>({
         )}
       </div>
 
-      {hasBlogs && (
+      {blogs.length > 0 && (
         <Link
           href={`/${topic}`}
           className="group relative mx-auto mt-8 flex h-12 w-fit items-center gap-x-4 py-4 pl-2 pr-6"
