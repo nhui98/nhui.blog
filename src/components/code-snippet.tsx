@@ -15,7 +15,6 @@ export function CodeSnippet({
     <SyntaxHighlighter
       style={AtomDark}
       useInlineStyles={true}
-      showLineNumbers
       language={language}
       customStyle={customStyle}
     >

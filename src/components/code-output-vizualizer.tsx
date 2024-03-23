@@ -10,22 +10,19 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 export function CodeOutputVizualizer({
   children,
   resizable,
+  caption,
 }: {
   children: React.ReactNode;
   resizable?: boolean;
+  caption?: string;
 }) {
   const isMedium = useMediaQuery("(min-width: 768px)");
-
   const size = !isMedium || !resizable ? 100 : 95;
 
   return (
-    <div>
+    <figure>
       <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel
-          defaultSize={size}
-          maxSize={size}
-          className="md:min-w-[350px]"
-        >
+        <ResizablePanel defaultSize={size} maxSize={size}>
           {children}
         </ResizablePanel>
         {resizable && (
@@ -38,6 +35,7 @@ export function CodeOutputVizualizer({
 
         <ResizablePanel defaultSize={100 - size} minSize={100 - size} />
       </ResizablePanelGroup>
-    </div>
+      {caption && <figcaption>{caption}</figcaption>}
+    </figure>
   );
 }
