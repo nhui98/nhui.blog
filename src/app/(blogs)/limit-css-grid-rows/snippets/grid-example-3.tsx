@@ -4,7 +4,7 @@ export default function Component() {
   return (
     <div
       className={cn(
-        "grid grid-cols-2 grid-rows-2 gap-1 md:grid-cols-3",
+        "grid grid-cols-2 gap-1 md:grid-cols-3",
         "[&>*:nth-child(4)~*]:hidden md:[&>*:nth-child(4)~*]:block",
         "md:[&>*:nth-child(6)~*]:hidden",
       )}

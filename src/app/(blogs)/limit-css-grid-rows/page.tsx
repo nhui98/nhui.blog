@@ -77,7 +77,7 @@ export default async function Page() {
 
       <p>
         {
-          "Here we've specified a 3x2 grid container (6 cells). However, since there are 8 grid items (requiring 8 cells), an additional row was added implicitly by the grid container. This is the default behavior but in this situation, I want to limit the number of rows to 2."
+          "Here we've specified a 3 column grid container that has 8 grid items. The default behavior of the container means that 3 rows are implicitly created to fit its contents. However, in this situation I want to limit the number of rows to 2."
         }
       </p>
 
