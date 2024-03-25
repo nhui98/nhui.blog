@@ -33,7 +33,11 @@ export default async function Page() {
         {
           "CSS Grid is a powerful way to create layouts for the web. If you are new with the grid layout module,"
         }{" "}
-        <a href="https://css-tricks.com/" target="_blank">
+        <a
+          href="https://css-tricks.com/"
+          target="_blank"
+          aria-label="Go to CSS Trick's home page"
+        >
           CSS Tricks
         </a>{" "}
         {
@@ -42,6 +46,7 @@ export default async function Page() {
         <a
           href="https://css-tricks.com/snippets/css/complete-guide-grid/"
           target="_blank"
+          aria-label="Go to CSS Trick's guide for CSS Grid"
         >
           here
         </a>
@@ -88,6 +93,7 @@ export default async function Page() {
         <a
           href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia"
           target="_blank"
+          aria-label="Go to MDN's documentation for window.matchMedia()"
         >
           window.matchMedia()
         </a>{" "}
@@ -125,6 +131,7 @@ export default async function Page() {
         <a
           href="https://react.dev/reference/react/useSyncExternalStore"
           target="_blank"
+          aria-label="Go to React's documentation for useSyncExternalStore"
         >
           useSyncExternalStore
         </a>{" "}

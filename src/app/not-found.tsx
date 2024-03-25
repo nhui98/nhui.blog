@@ -17,6 +17,7 @@ export default function Page() {
       <Link
         href="/"
         className="mt-8 block text-center text-xl underline underline-offset-2 transition-colors hover:text-blue-500 hover:decoration-blue-500"
+        aria-label="Return to home page"
       >
         Return Home
       </Link>

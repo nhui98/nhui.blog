@@ -15,6 +15,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       <button
         className="relative z-10 flex flex-1 items-center gap-2 px-3 py-3 text-sm font-medium text-gray-50 transition-colors md:py-1.5 md:pl-3 md:pr-3.5 dark:text-gray-300"
         onClick={() => setTheme("light")}
+        aria-label="Light theme"
       >
         <Sun className="size-4" />
         <span>Light</span>
@@ -22,6 +23,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       <button
         className="relative z-10 flex flex-1 items-center gap-2 px-3 py-3 text-sm font-medium text-gray-800 transition-colors md:py-1.5 md:pl-3 md:pr-3.5 dark:text-gray-50"
         onClick={() => setTheme("dark")}
+        aria-label="Dark theme"
       >
         <MoonStar className="size-4" />
         <span>Dark</span>

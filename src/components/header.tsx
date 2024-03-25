@@ -38,7 +38,7 @@ export function Header() {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/">
+                <Link href="/" aria-label="Go to home page">
                   <BlogLogo className="size-16" />
                 </Link>
               </BreadcrumbLink>
@@ -98,6 +98,7 @@ function TopicBreadcrumbItem({
             <Link
               href={`/${topic}`}
               className="flex items-center gap-0.5 capitalize"
+              aria-label={`Go to topics page`}
             >
               {topic}
             </Link>

@@ -76,6 +76,7 @@ function BlogOverview<T extends Slug>({
         <Link
           href={`/${topic}`}
           className="group relative mx-auto mt-8 flex h-12 w-fit items-center gap-x-4 py-4 pl-2 pr-6"
+          aria-label="Browse all blogs in this topic"
         >
           <ArrowRight className="size-8 text-zinc-900 transition-all duration-300 group-hover:translate-x-2 group-hover:text-blue-500 dark:text-zinc-50 dark:group-hover:text-purple-500" />
           <span className="font-medium">Browse All</span>
