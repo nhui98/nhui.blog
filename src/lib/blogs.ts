@@ -10,19 +10,22 @@ export function isTopic(topic: string): topic is Topic {
 export type Topic = (typeof TOPICS)[number];
 
 // Tags ----------------------------------------------------------------
-export const TAGS = ["styling"] as const;
+export const TAGS = ["styling", "nextjs"] as const;
 
 export function getTagStyle(tag: Tag): BadgeProps["variant"] {
   switch (tag) {
     case "styling":
       return "blue";
+    case "nextjs":
+    default:
+      return "default";
   }
 }
 
 export type Tag = (typeof TAGS)[number];
 
 // Slugs ----------------------------------------------------------------
-const SLUGS = ["limit-css-grid-rows"] as const;
+const SLUGS = ["limit-css-grid-rows", "forms-in-nextjs"] as const;
 
 export function isSlug(slug: string): slug is Slug {
   return SLUGS.includes(slug);
@@ -60,5 +63,14 @@ const BLOGS: {
     topic: "coding",
     tags: ["styling"],
     date: "March 23, 2024",
+  },
+  "forms-in-nextjs": {
+    slug: "forms-in-nextjs",
+    title: "Forms in Nextjs",
+    description:
+      "Create a form and handle submissions with server actions. Validate the form data both on the client and server using react-hook-form and zod.",
+    topic: "coding",
+    tags: ["nextjs"],
+    date: "March 27, 2024",
   },
 };

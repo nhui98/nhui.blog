@@ -20,7 +20,7 @@ export function CodeOutputVizualizer({
   const size = !isMedium || !resizable ? 100 : 95;
 
   return (
-    <figure>
+    <figure className="not-prose my-6">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={size} maxSize={size}>
           {children}
@@ -35,7 +35,7 @@ export function CodeOutputVizualizer({
 
         <ResizablePanel defaultSize={100 - size} minSize={100 - size} />
       </ResizablePanelGroup>
-      {caption && <figcaption>{caption}</figcaption>}
+      {caption && <figcaption className="mt-4">{caption}</figcaption>}
     </figure>
   );
 }
