@@ -24,7 +24,10 @@ export default async function Page() {
     formValidator,
     useIsHydrated,
     formExample3,
-    serverAction,
+    formExample3Action,
+    formExample4,
+    formExample4Action,
+    formExample5,
   ] = await Promise.all([
     getCodeSnippet(blog.slug, "form-example-1.tsx"),
     getCodeSnippet(blog.slug, "form-example-2.tsx"),
@@ -32,6 +35,9 @@ export default async function Page() {
     getCodeSnippet(blog.slug, "use-is-hydrated.ts"),
     getCodeSnippet(blog.slug, "form-example-3.tsx"),
     getCodeSnippet(blog.slug, "form-example-3.action.ts"),
+    getCodeSnippet(blog.slug, "form-example-4.tsx"),
+    getCodeSnippet(blog.slug, "form-example-4.action.ts"),
+    getCodeSnippet(blog.slug, "form-example-5.tsx"),
   ]);
 
   return (
@@ -151,16 +157,19 @@ export default async function Page() {
           </div>
         </CodeOutputVizualizer>
 
-        {formExample3 && formValidator && serverAction && useIsHydrated && (
-          <CodeVisualizer
-            files={[
-              { filename: "form.tsx", content: formExample3 },
-              { filename: "form.action.ts", content: serverAction },
-              { filename: "form.validator.ts", content: formValidator },
-              { filename: "use-is-hydrated.ts", content: useIsHydrated },
-            ]}
-          />
-        )}
+        {formExample3 &&
+          formValidator &&
+          formExample3Action &&
+          useIsHydrated && (
+            <CodeVisualizer
+              files={[
+                { filename: "form.tsx", content: formExample3 },
+                { filename: "form.action.ts", content: formExample3Action },
+                { filename: "form.validator.ts", content: formValidator },
+                { filename: "use-is-hydrated.ts", content: useIsHydrated },
+              ]}
+            />
+          )}
 
         <p>
           {
@@ -212,6 +221,48 @@ export default async function Page() {
         <p>
           {
             "One final point is that we are checking and displaying the server-side validation errors if they exist."
+          }
+        </p>
+      </section>
+
+      <section>
+        <h2>Bonus: Adding a Honeypot</h2>
+
+        <p>
+          {
+            "To prevent spam bots from submitting the form, we can add a honeypot field. This is a hidden field that should be left blank by the user. If the field is filled in, we can assume it's a bot and reject the form submission."
+          }
+        </p>
+
+        {formExample4 && formExample4Action && (
+          <CodeVisualizer
+            files={[
+              { filename: "form.tsx", content: formExample4 },
+              { filename: "form.validator.ts", content: formExample4Action },
+            ]}
+          />
+        )}
+      </section>
+
+      <section>
+        <h2>Bonus: Focus Input on Error</h2>
+
+        <p>
+          {
+            "The first invalid field is automatically focused when validation is handled by react-hook-form or by the default browser validations. However, any validation issues raised in the server actions will not. Let's fix that."
+          }
+        </p>
+
+        {formExample5 && (
+          <CodeVisualizer
+            files={[{ filename: "form.tsx", content: formExample5 }]}
+          />
+        )}
+
+        <p>
+          {"In the"} <code>useEffect()</code>{" "}
+          {
+            "hook, if the form is in an error state, we can grab the first invalid field with the aria-invalid attribute set to true and focus on it."
           }
         </p>
       </section>

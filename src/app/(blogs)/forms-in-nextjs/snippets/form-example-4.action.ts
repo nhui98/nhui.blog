@@ -13,6 +13,12 @@ export async function FormAction(
   prevState: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  const honeypot = formData.get("honeypot");
+
+  if (honeypot) {
+    return { status: "error" };
+  }
+
   const parsedData = FormValidator.safeParse(Object.fromEntries(formData));
 
   if (!parsedData.success) {
@@ -22,10 +28,5 @@ export async function FormAction(
     };
   }
 
-  return {
-    status: "error",
-    errors: {
-      username: ["Username is already taken. Please try another one."],
-    },
-  };
+  return { status: "success" };
 }
